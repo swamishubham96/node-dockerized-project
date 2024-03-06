@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Git Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/swamishubham96/node-dockerized-project.git'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'sudo npm install'
+                sh 'npm test'
+            }
+         } 
+         stage('Build') {
+            steps {
+                sh 'npm run build' 
+            }
+        }
+        stage('Build Image') {
+            steps {
+                sh 'docker build -t nodeimage:shubham'
