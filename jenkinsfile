@@ -25,4 +25,4 @@ pipeline {
         }
         stage('kubernetes Deploy') {
             steps {
-                sh "kubectl apply -f nodejskubernetesservice.yml
+                sh "kubectl apply -f nodejskubernetesservice.yml"
