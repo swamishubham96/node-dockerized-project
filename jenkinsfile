@@ -9,15 +9,20 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'sudo npm install'
-                sh 'npm test'
+                sh "sudo npm install"
+                sh "npm test"
             }
          } 
          stage('Build') {
             steps {
-                sh 'npm run build' 
+                sh "npm run build" 
             }
         }
-        stage('Build Image') {
+        stage('Build Image & tag images') {
             steps {
-                sh 'docker build -t nodeimage:shubham'
+                sh "docker build -t shubhamswami123/nodejs:latest"
+             }
+        }
+        stage('kubernetes Deploy') {
+            steps {
+                sh "kubectl apply -f nodejskubernetesservice.yml
