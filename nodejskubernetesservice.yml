@@ -26,5 +26,5 @@ spec:
   selector:
     app: nodejs-hello-world
   ports:
-    port: 3000
+    port: 80
       targetPort: 3000
