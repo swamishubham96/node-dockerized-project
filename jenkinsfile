@@ -23,6 +23,16 @@ pipeline {
                 sh "docker build -t shubhamswami123/nodejs:latest"
              }
         }
-        stage('kubernetes Deploy') {
+        stage('push') {
+            steps {
+                script {
+                    docker.withRegistry('https://registry.hub.com', username:shubhamswami123 password:docker@1290) {
+                        docker.image "shubhamswami123/nodejs:latest"
+                  }
+             }
+            stage('kubernetes Deploy') {
             steps {
                 sh "kubectl apply -f nodejskubernetesservice.yml"
+                 }
+            }
+                
