@@ -27,4 +27,4 @@ spec:
     app: nodejs-hello-world
   ports:
     port: 80
-      targetPort: 3000
+      nodePort: 3000
