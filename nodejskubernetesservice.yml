@@ -23,8 +23,10 @@ kind: Service
 metadata:
   name: nodejs-hello-world-service
 spec:
-  selector:
+ type: NodePort
+ selector:
     app: nodejs-hello-world
   ports:
-    port: 80
-      nodePort: 3000
+    -port: 80
+     targetPort: 3000
+      NodePort: 30001
